@@ -1,9 +1,8 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
 
-  export const load: Load = async ({ page }) => {
-    const { query } = page;
-    const searchTerm = query.get('name') || '';
+  export const load: Load = async ({ params }) => {
+    const searchTerm = params.name || '';
 
     return {
       props: { searchTerm },
@@ -50,7 +49,7 @@
       if (searchTerm) {
         results = searchFor(searchTerm);
         const search = new URLSearchParams({ name: searchTerm });
-        if (browser) goto(`${$page.path}?${search}`, { replaceState: true, keepfocus: true });
+        if (browser) goto(`${$page.url.pathname}?${search}`, { replaceState: true, keepfocus: true });
       }
     }, 300);
   };

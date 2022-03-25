@@ -72,12 +72,12 @@
         {#if !isEditing}
           <a
             class="button small"
-            href="{$page.path}?editing"
+            href="{$page.url.pathname}?editing"
             sveltekit:noscroll
             data-test="post-detail-controls-edit-button">Edit</a
           >
         {:else}
-          <a class="button small" href={$page.path} data-test="post-detail-controls-cancel-button"
+          <a class="button small" href={$page.url.pathname} data-test="post-detail-controls-cancel-button"
             >Cancel</a
           >
         {/if}

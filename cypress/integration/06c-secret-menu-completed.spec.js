@@ -51,6 +51,7 @@ describe('Secret Menu Items', () => {
 
     it('should hide the column when the checkbox is unchecked', () => {
       cy.get(`#show-${property}`).click();
+      // cy.get(`#show-${property}`).uncheck();
       cy.get(`#${property}-column`).should('be.hidden');
     });
   }
@@ -64,7 +65,7 @@ describe('Secret Menu Items', () => {
       it(`should only display rows that match ${restaurant} when selected`, () => {
         cy.get('@restaurant-filter').select(restaurant);
 
-        cy.get('td[headers="whereToOrder-column"]').should('contain', restaurant);
+        cy.get('td[headers="whereToOrder-column"]').should('contain', restaurant).and('have.length.at.least', 1);
       });
     }
   });
@@ -75,7 +76,7 @@ describe('Secret Menu Items', () => {
     });
 
     for (const rating of ratings) {
-      it(`should only display items with a popularity above ${rating}`, () => {
+      it.only(`should only display items with a popularity above ${rating}`, () => {
         cy.get('@rating-filter').invoke('val', rating).trigger('change');
         cy.get('td[headers="popularity-column"]').each(($el) => {
           expect(+$el.text()).to.be.gte(rating);

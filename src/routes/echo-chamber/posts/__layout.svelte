@@ -5,7 +5,7 @@
     const endpoint = '/echo-chamber/api';
     const response = await fetch(endpoint);
     const { user } = session;
-
+    console.log(`user: ${JSON.stringify(user)}`);
     if (!user) {
       return {
         redirect: '/echo-chamber/sign-in',

@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
 
-  export const load: Load = async ({ params }) => {
-    const searchTerm = params.name || '';
+  export const load: Load = async ({ url }) => {
+    const searchTerm = url.searchParams.get('name') || '';
 
     return {
       props: { searchTerm },

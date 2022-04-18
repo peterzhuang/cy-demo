@@ -16,8 +16,7 @@
             type="checkbox"
             checked={item.packed}
             on:change={() => toggle(item.id)}
-          />
-          {item.title}
+          /> {item.title}
         </label>
         <button data-test="remove" class="small" on:click={() => remove(item.id)}>Remove</button>
       </li>

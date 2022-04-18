@@ -16,7 +16,10 @@ describe('Dog Facts', () => {
     cy.get('@emptyState');
   });
 
-  it('should make a request when the button is called', () => {});
+  it('should make a request when the button is called', () => {
+    cy.get('@fetchButton').click();
+    cy.wait('@api');
+  });
 
   it('should adjust the amount when the select is changed', () => {});
 

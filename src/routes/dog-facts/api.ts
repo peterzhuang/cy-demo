@@ -8,9 +8,8 @@ const shuffle = <T>(data: T[]): T[] => {
   });
 };
 
-export const get: RequestHandler = async (request) => {
-  const { query } = request;
-  const amount = query.get('amount')?.toLowerCase();
+export const get: RequestHandler = async ({ url }) => {
+  const amount = url.searchParams.get('amount')?.toLowerCase();
 
   const facts: DogFact[] = shuffle(data).slice(0, +amount);
 
